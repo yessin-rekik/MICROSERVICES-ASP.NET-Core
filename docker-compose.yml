@@ -1,0 +1,13 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: ecomm
+    hostname: my-rabbit
+    ports:
+      # 4001 is the port used by MassTransit (see Program.cs of both microservices).
+      - "4001:5672"
+      # RabbitMQ management UI: http://localhost:15672 (guest / guest).
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest

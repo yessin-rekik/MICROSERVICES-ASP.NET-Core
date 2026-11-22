@@ -1,0 +1,37 @@
+@ProductsAPI_HostAddress = https://localhost:7066
+
+GET {{ProductsAPI_HostAddress}}/api/Products
+Accept: application/json
+
+###
+
+GET {{ProductsAPI_HostAddress}}/api/Products/1
+Accept: application/json
+
+###
+
+# Creates the product and publishes a ProductCreated message on RabbitMQ.
+POST {{ProductsAPI_HostAddress}}/api/Products
+Content-Type: application/json
+
+{
+  "name": "prod1",
+  "stockQte": 50,
+  "price": 1000
+}
+
+###
+
+PUT {{ProductsAPI_HostAddress}}/api/Products/1
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "name": "prod1",
+  "stockQte": 40,
+  "price": 1520
+}
+
+###
+
+DELETE {{ProductsAPI_HostAddress}}/api/Products/2

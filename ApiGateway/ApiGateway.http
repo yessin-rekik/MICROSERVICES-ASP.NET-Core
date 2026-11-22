@@ -1,0 +1,36 @@
+@ApiGateway_HostAddress = https://localhost:7162
+
+GET {{ApiGateway_HostAddress}}/apigateway/Products
+Accept: application/json
+
+###
+
+GET {{ApiGateway_HostAddress}}/apigateway/Products/1
+Accept: application/json
+
+###
+
+POST {{ApiGateway_HostAddress}}/apigateway/Products
+Content-Type: application/json
+
+{
+  "name": "prod1",
+  "stockQte": 50,
+  "price": 1000
+}
+
+###
+
+GET {{ApiGateway_HostAddress}}/apigateway/Orders
+Accept: application/json
+
+###
+
+POST {{ApiGateway_HostAddress}}/apigateway/Orders
+Content-Type: application/json
+
+{
+  "orderDate": "2026-11-03T00:00:00",
+  "customerName": "client1",
+  "productId": 1
+}

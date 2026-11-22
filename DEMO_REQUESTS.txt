@@ -1,0 +1,80 @@
+==========================================
+ DEMO REQUESTS - MicroservicesApp
+==========================================
+
+--- ProductsAPI (Swagger: https://localhost:7066/swagger) ---
+
+POST   /api/Products
+{
+  "name": "Laptop",
+  "stockQte": 10,
+  "price": 999.99
+}
+
+GET    /api/Products
+
+GET    /api/Products/1
+
+PUT    /api/Products/1
+{
+  "productId": 1,
+  "name": "Laptop Pro",
+  "stockQte": 8,
+  "price": 1299.99
+}
+
+DELETE /api/Products/1
+
+
+--- OrdersAPI (Swagger: https://localhost:7065/swagger) ---
+
+POST   /api/Orders
+{
+  "orderDate": "2026-11-22T10:00:00",
+  "customerName": "John Doe",
+  "productId": 1
+}
+
+GET    /api/Orders
+
+GET    /api/Orders/1
+
+PUT    /api/Orders/1
+{
+  "ordersId": 1,
+  "orderDate": "2026-11-22T10:00:00",
+  "customerName": "Jane Doe",
+  "productId": 1
+}
+
+DELETE /api/Orders/1
+
+
+--- API Gateway (Postman / browser - base https://localhost:7162) ---
+
+GET    /apigateway/Products
+
+POST   /apigateway/Products
+{
+  "name": "Phone",
+  "stockQte": 5,
+  "price": 499.99
+}
+
+GET    /apigateway/Products/1
+
+GET    /apigateway/Orders
+
+POST   /apigateway/Orders
+{
+  "orderDate": "2026-11-22T10:00:00",
+  "customerName": "Alice",
+  "productId": 1
+}
+
+GET    /apigateway/Orders/1
+
+
+--- RabbitMQ sync check (after POST /api/Products) ---
+Product is mirrored into OrdersAPI's database.
+Open orders.db -> Products table -> new row with the posted product.
